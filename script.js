@@ -5,7 +5,7 @@ const tabUrls = {
 };
 
 window.onload = () => {
-    const savedUrl = localStorage.getItem(`https://mexismath.web.app`);
+    const savedUrl = localStorage.getItem(`tab_${currentTab}`);
     if (savedUrl) {
         tabUrls[currentTab] = savedUrl;
         document.getElementById('iframe').src = savedUrl;
@@ -16,10 +16,8 @@ function switchTab(event) {
     event.stopPropagation();
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => tab.classList.remove('active'));
-
     event.currentTarget.classList.add('active');
     currentTab = Number(event.currentTarget.dataset.tab);
-    
     if (tabUrls[currentTab]) {
         document.getElementById('iframe').src = tabUrls[currentTab];
     } else {
@@ -42,11 +40,9 @@ function addTab() {
     newTab.dataset.tab = tabCount;
     newTab.onclick = switchTab;
     tabBar.insertBefore(newTab, tabBar.querySelector('.new-tab'));
-
     requestAnimationFrame(() => {
         newTab.style.opacity = '1';
     });
-
     tabUrls[tabCount] = "https://mexismath.web.app";
     switchTab({ currentTarget: newTab });
 }
@@ -55,14 +51,11 @@ function closeTab(event) {
     event.stopPropagation();
     const tab = event.currentTarget.parentElement;
     const tabs = document.querySelectorAll('.tab');
-
     if (tab.dataset.tab === "1") {
         return;
     }
-
     delete tabUrls[tab.dataset.tab];
     tab.remove();
-
     if (tabs.length === 1) {
         if (tabs[0].dataset.tab === "1") {
             addTab();
@@ -92,19 +85,38 @@ function goForward() {
 function refreshPage() {
     const activeTab = document.querySelector('.tab.active');
     const currentTabIndex = activeTab.dataset.tab;
-    tabUrls[currentTabIndex] = document.getElementById('iframe').src;
-    document.getElementById('iframe').contentWindow.location.reload();
+    document.getElementById('iframe').src = tabUrls[currentTabIndex];
 }
 
 function toggleFullscreen() {
     const iframe = document.getElementById('iframe');
     if (iframe.requestFullscreen) {
         iframe.requestFullscreen();
-    } else if (iframe.mozRequestFullScreen) {
-        iframe.mozRequestFullScreen();
     } else if (iframe.webkitRequestFullscreen) {
         iframe.webkitRequestFullscreen();
     } else if (iframe.msRequestFullscreen) {
         iframe.msRequestFullscreen();
     }
+}
+
+function toggleSettings() {
+    const settingsBox = document.getElementById('settings-box');
+    settingsBox.classList.toggle('active');
+}
+
+function closeSettings() {
+    document.getElementById('settings-box').classList.remove('active');
+}
+
+function toggleGames() {
+    const gamesBox = document.getElementById('games-box');
+    gamesBox.classList.toggle('active');
+}
+
+function closeGames() {
+    document.getElementById('games-box').classList.remove('active');
+}
+
+function loadGame(url) {
+    document.getElementById('iframe').src = url;
 }
