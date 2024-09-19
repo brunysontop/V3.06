@@ -20,7 +20,7 @@
             color: #fff;
             font-family: 'Roboto Mono', monospace;
         }
-         button {
+         .main-button {
             padding: 10px 15px;
             background-color: #0d0d0d;
             border: none;
@@ -30,7 +30,7 @@
             cursor: pointer;
             transition: 0.3s ease-in-out;
         }
-        button:hover {
+        .main-button:hover {
             background-color: #ccc;
         }
         .info {
