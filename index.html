@@ -1,10 +1,11 @@
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrunysIXL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="browser">
@@ -23,12 +24,25 @@
             <button onclick="goForward()"><i class="fas fa-chevron-right"></i></button>
             <button onclick="refreshPage()"><i class="fas fa-sync-alt"></i></button>
             <button onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
+            <button onclick="toggleSettings()"><i class="fas fa-cog"></i></button>
+            <button onclick="toggleGames()"><i class="fas fa-gamepad"></i></button>
         </div>
         <div class="content">
-            <iframe id="iframe" src="https://mexismath.web.app"></iframe>
+            <iframe id="iframe" src="/static/index.html"></iframe>
+        </div>
+        <div class="settings-box" id="settings-box">
+            <h4>Settings</h4>
+            <p>Here you can configure various options.</p>
+            <button class="new-tab" onclick="closeSettings()">Close</button>
+        </div>
+        <div class="games-box" id="games-box">
+            <h4>Games</h4>
+            <div>
+                <img src="https://games.cdn.brunys-number.one/projects/slope/slope4.jpeg" alt="slope" onclick="loadGame('https://games.cdn.brunys-number.one/projects/slope/')">
+            </div>
+            <button class="new-tab" onclick="closeGames()">Close</button>
         </div>
     </div>
-
     <script src="/script.js"></script>
 </body>
 </html>
