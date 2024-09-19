@@ -28,6 +28,24 @@
         </div>
         <div class="settings-box" id="settings-box">
             <h4>Settings</h4>
+
+            <h2 style="margin: 0;">tab cloaking</h2>
+            <br>
+            <select id="presetSelect">
+                <option value="google">google</option>
+                <option value="googleclassroom">google classroom</option>
+                <option value="googledrive">google drive</option>
+                <option value="chrometab">chrome new tab</option>
+                <option value="gmail">gmail</option>
+                <option value="bing">bing</option>
+                <option value="desmos">desmos calculator</option>
+                <option value="wikipedia">wikipedia</option>
+            </select>
+        
+            <button id="saveButton">select cloak</button>
+            <button id="resetButton">reset cloak</button>
+            <p id="success" style="display: none;">success message here</p>
+            
             <p>Here you can configure various options.</p>
             <button class="new-tab" onclick="closeSettings()">Close</button>
         </div>
@@ -46,5 +64,8 @@
         </div>
     </div>
     <script src="/script.js"></script>
+    <script src="/storage/morejs/cloak.js"></script>
+    <script src="/storage/morejs/cloak.js"></script>
+    <script src="/storage/morejs/settings.js"></script>
 </body>
 </html>
