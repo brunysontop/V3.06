@@ -1,7 +1,7 @@
 let tabCount = 2;
 let currentTab = 1;
 const tabUrls = {
-    1: "https://mexismath.web.app"
+    1: "/static/index.html"
 };
 
 window.onload = () => {
@@ -21,7 +21,7 @@ function switchTab(event) {
     if (tabUrls[currentTab]) {
         document.getElementById('iframe').src = tabUrls[currentTab];
     } else {
-        const defaultUrl = "https://mexismath.web.app";
+        const defaultUrl = "/static/index.html";
         tabUrls[currentTab] = defaultUrl;
         document.getElementById('iframe').src = defaultUrl;
     }
@@ -43,7 +43,7 @@ function addTab() {
     requestAnimationFrame(() => {
         newTab.style.opacity = '1';
     });
-    tabUrls[tabCount] = "https://mexismath.web.app";
+    tabUrls[tabCount] = "/static/index.html";
     switchTab({ currentTarget: newTab });
 }
 
