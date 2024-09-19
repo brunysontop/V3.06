@@ -1,4 +1,4 @@
-let tabCount = 2;
+let tabCount = 1;
 let currentTab = 1;
 const tabUrls = {
     1: "/static/index.html"
