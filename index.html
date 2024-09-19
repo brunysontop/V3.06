@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/storage/morecss/key.css">
 </head>
 <body>
     <div class="browser">
@@ -48,6 +49,27 @@
             
             <p>Here you can configure various options.</p>
             <button class="new-tab" onclick="closeSettings()">Close</button>
+
+            <h2>Panic Key</h2>
+            <br>
+
+            <div class="container">
+
+        <div class="form-group">
+            <label for="key">Key:</label>
+            <input type="text" id="key" placeholder="Enter key (e.g., A, B, C)" maxlength="1">
+        </div>
+
+        <div class="form-group">
+            <label for="url">URL:</label>
+            <input type="text" id="url" placeholder="Enter URL (e.g., https://www.example.com)">
+        </div>
+
+        <div class="form-group">
+            <button id="addMapping">Set Panic Key</button>
+        </div>
+    </div>
+            
         </div>
         <div class="games-box" id="games-box">
             <h4>Games</h4>
@@ -67,5 +89,6 @@
     <script src="/storage/morejs/cloak.js"></script>
     <script src="/storage/morejs/cloak.js"></script>
     <script src="/storage/morejs/settings.js"></script>
+    <script src="/storage/morejs/key.js"></script>
 </body>
 </html>
