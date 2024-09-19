@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+
 .container {
             max-width: 600px;
             width: 100%;
@@ -12,21 +14,24 @@
         .form-group input {
             width: calc(100% - 22px);
             padding: 10px;
-            border: 1px solid #333;
+            border: none;
             border-radius: 5px;
-            background-color: #222;
+            background-color: #0d0d0d;
             color: #fff;
+            font-family: 'Roboto Mono', monospace;
         }
-        .form-group button {
+         button {
             padding: 10px 15px;
-            background-color: #007bff;
+            background-color: #0d0d0d;
             border: none;
             border-radius: 5px;
             color: #fff;
+            font-family: 'Roboto Mono', monospace;
             cursor: pointer;
+            transition: 0.3s ease-in-out;
         }
-        .form-group button:hover {
-            background-color: #0056b3;
+        button:hover {
+            background-color: #ccc;
         }
         .info {
             text-align: center;
