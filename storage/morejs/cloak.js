@@ -121,6 +121,3 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener('keydown', keyHandler);
     document.addEventListener('keyup', keyUpHandler);
 })();
-
-
-
