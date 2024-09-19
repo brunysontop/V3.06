@@ -11,11 +11,7 @@
     <div class="browser">
         <div class="tab-bar">
             <div class="tab active" onclick="switchTab(event)" data-tab="1">
-                Tab 1
-            </div>
-            <div class="tab" onclick="switchTab(event)" data-tab="2">
-                Tab 2
-                <button class="close-btn" onclick="closeTab(event)"><i class="fas fa-times"></i></button>
+                Main
             </div>
             <button class="new-tab" onclick="addTab()">+ New Tab</button>
         </div>
@@ -38,7 +34,13 @@
         <div class="games-box" id="games-box">
             <h4>Games</h4>
             <div>
-                <img src="https://games.cdn.brunys-number.one/projects/slope/slope4.jpeg" alt="slope" onclick="loadGame('https://games.cdn.brunys-number.one/projects/slope/')">
+                <img src="/storage/games/polytrack/polytrack.jpeg" alt="poly track" onclick="loadGame('/storage/games/polytrack/index.html')">
+                <img src="/storage/games/redball4/splash.webp" alt="red ball 4" onclick="loadGame('/storage/games/redball4/index.html')">
+                <img src="/storage/backup-images/omeganuggetclicker.png" alt="slope" onclick="loadGame('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')">
+                <img src="/storage/games/slope/splash.png" alt="slope" onclick="loadGame('/storage/games/slope/index.html')">
+                <img src="/storage/games/1v1lol/splash.png" alt="1v1.lol" onclick="loadGame('/storage/games/1v1lol/index.html')">
+                <img src="/storage/games/soccerskills/splash.png" alt="soccer skills" onclick="loadGame('/storage/games/soccerskills/index.html')">
+                <img src="/storage/games/basketball-stars/assets/images/basketball-stars.png" alt="slope" onclick="loadGame('/storage/games/basketball-stars/index.html')">
             </div>
             <button class="new-tab" onclick="closeGames()">Close</button>
         </div>
