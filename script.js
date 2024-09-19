@@ -1,122 +1,113 @@
 let tabCount = 1;
-let currentTab = 1;
-const tabUrls = {
-    1: "/static/index.html"
-};
+        let currentTab = 1;
+        const tabData = {
+            1: { url: "/static/index.html" }
+        };
 
-window.onload = () => {
-    const savedUrl = localStorage.getItem(`tab_${currentTab}`);
-    if (savedUrl) {
-        tabUrls[currentTab] = savedUrl;
-        document.getElementById('iframe').src = savedUrl;
-    }
-};
+        function addTab() {
+            tabCount++;
+            const tabBar = document.querySelector('.tab-bar');
+            const newTab = document.createElement('div');
+            newTab.className = 'tab';
+            newTab.style.opacity = '0';
+            newTab.innerHTML = `
+                Tab ${tabCount}
+                <button class="close-btn" onclick="closeTab(event)"><i class="fas fa-times"></i></button>
+            `;
+            newTab.dataset.tab = tabCount;
+            newTab.onclick = switchTab;
+            tabBar.insertBefore(newTab, tabBar.querySelector('.new-tab'));
 
-function switchTab(event) {
-    event.stopPropagation();
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-    currentTab = Number(event.currentTarget.dataset.tab);
-    if (tabUrls[currentTab]) {
-        document.getElementById('iframe').src = tabUrls[currentTab];
-    } else {
-        const defaultUrl = "/static/index.html";
-        tabUrls[currentTab] = defaultUrl;
-        document.getElementById('iframe').src = defaultUrl;
-    }
-}
+            requestAnimationFrame(() => {
+                newTab.style.opacity = '1';
+            });
 
-function addTab() {
-    tabCount++;
-    const tabBar = document.querySelector('.tab-bar');
-    const newTab = document.createElement('div');
-    newTab.className = 'tab';
-    newTab.style.opacity = '0';
-    newTab.innerHTML = `
-        Tab ${tabCount}
-        <button class="close-btn" onclick="closeTab(event)"><i class="fas fa-times"></i></button>
-    `;
-    newTab.dataset.tab = tabCount;
-    newTab.onclick = switchTab;
-    tabBar.insertBefore(newTab, tabBar.querySelector('.new-tab'));
-    requestAnimationFrame(() => {
-        newTab.style.opacity = '1';
-    });
-    tabUrls[tabCount] = "/static/index.html";
-    switchTab({ currentTarget: newTab });
-}
+            
+            tabData[tabCount] = { url: "/static/index.html" };
 
-function closeTab(event) {
-    event.stopPropagation();
-    const tab = event.currentTarget.parentElement;
-    const tabs = document.querySelectorAll('.tab');
-    if (tab.dataset.tab === "1") {
-        return;
-    }
-    delete tabUrls[tab.dataset.tab];
-    tab.remove();
-    if (tabs.length === 1) {
-        if (tabs[0].dataset.tab === "1") {
-            addTab();
+            
+            const newIframe = document.createElement('iframe');
+            newIframe.className = 'iframe';
+            newIframe.id = `iframe-${tabCount}`;
+            newIframe.src = tabData[tabCount].url; 
+            newIframe.sandbox = "allow-same-origin allow-scripts";
+            document.querySelector('.iframe-container').appendChild(newIframe); 
+
+            switchTab({ currentTarget: newTab }); 
         }
-    } else {
-        const activeTab = document.querySelector('.tab.active');
-        if (activeTab === tab) {
-            switchTab({ currentTarget: tabs[0] });
+
+        function switchTab(event) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            const iframes = document.querySelectorAll('.iframe');
+            iframes.forEach(iframe => iframe.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            currentTab = Number(event.currentTarget.dataset.tab);
+
+            
+            document.getElementById(`iframe-${currentTab}`).classList.add('active');
         }
-    }
-}
 
-function goBack() {
-    const activeTab = document.querySelector('.tab.active');
-    const currentTabIndex = activeTab.dataset.tab;
-    document.getElementById('iframe').contentWindow.history.back();
-    tabUrls[currentTabIndex] = document.getElementById('iframe').src;
-}
+        function closeTab(event) {
+            event.stopPropagation();
+            const tab = event.currentTarget.parentElement;
 
-function goForward() {
-    const activeTab = document.querySelector('.tab.active');
-    const currentTabIndex = activeTab.dataset.tab;
-    document.getElementById('iframe').contentWindow.history.forward();
-    tabUrls[currentTabIndex] = document.getElementById('iframe').src;
-}
+            if (tab.dataset.tab === "1") return; 
 
-function refreshPage() {
-    const activeTab = document.querySelector('.tab.active');
-    const currentTabIndex = activeTab.dataset.tab;
-    document.getElementById('iframe').src = tabUrls[currentTabIndex];
-}
+            const tabs = document.querySelectorAll('.tab');
+            tab.remove();
+            delete tabData[tab.dataset.tab];
+            const iframeToRemove = document.getElementById(`iframe-${tab.dataset.tab}`);
+            if (iframeToRemove) {
+                iframeToRemove.remove(); 
+            }
 
-function toggleFullscreen() {
-    const iframe = document.getElementById('iframe');
-    if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-    } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-    } else if (iframe.msRequestFullscreen) {
-        iframe.msRequestFullscreen();
-    }
-}
+            if (tab.classList.contains('active')) {
+                const nextTab = document.querySelector('.tab');
+                nextTab.classList.add('active');
+                currentTab = Number(nextTab.dataset.tab);
+                document.getElementById(`iframe-${currentTab}`).classList.add('active'); 
+            }
+        }
 
-function toggleSettings() {
-    const settingsBox = document.getElementById('settings-box');
-    settingsBox.classList.toggle('active');
-}
+        function goBack() {
+            const activeIframe = document.getElementById(`iframe-${currentTab}`);
+            activeIframe.contentWindow.history.back();
+        }
 
-function closeSettings() {
-    document.getElementById('settings-box').classList.remove('active');
-}
+        function goForward() {
+            const activeIframe = document.getElementById(`iframe-${currentTab}`);
+            activeIframe.contentWindow.history.forward();
+        }
 
-function toggleGames() {
-    const gamesBox = document.getElementById('games-box');
-    gamesBox.classList.toggle('active');
-}
+        function refreshPage() {
+            const activeIframe = document.getElementById(`iframe-${currentTab}`);
+            activeIframe.src = tabData[currentTab].url; 
+        }
 
-function closeGames() {
-    document.getElementById('games-box').classList.remove('active');
-}
+        function toggleFullscreen() {
+            const activeIframe = document.getElementById(`iframe-${currentTab}`);
+            if (activeIframe.requestFullscreen) {
+                activeIframe.requestFullscreen();
+            } else if (activeIframe.webkitRequestFullscreen) {
+                activeIframe.webkitRequestFullscreen();
+            } else if (activeIframe.msRequestFullscreen) {
+                activeIframe.msRequestFullscreen();
+            }
+        }
 
-function loadGame(url) {
-    document.getElementById('iframe').src = url;
-}
+        function toggleSettings() {
+            document.getElementById('settings-box').classList.toggle('active');
+        }
+
+        function toggleGames() {
+            document.getElementById('games-box').classList.toggle('active');
+        }
+
+        function loadGame(url) {
+            tabData[currentTab].url = url;
+            const activeIframe = document.getElementById(`iframe-${currentTab}`);
+            activeIframe.src = url; 
+            toggleGames(); 
+        }

@@ -1,4 +1,4 @@
-<html>
+<html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +9,28 @@
     <link rel="stylesheet" href="/storage/morecss/key.css">
 </head>
 <body>
-    <div class="browser">
-        <div class="tab-bar">
-            <div class="tab active" onclick="switchTab(event)" data-tab="1">
-                Main
-            </div>
-            <button class="new-tab" onclick="addTab()">+ New Tab</button>
+    <div class="tab-bar">
+        <div class="tab active" data-tab="1" onclick="switchTab(event)">
+            Main Tab
         </div>
-        <div class="controls-bar">
-            <button class="button" onclick="window.location.href='https://dsc.gg/bruny'"><i class="fa-brands fa-discord"></i></button>
-            <button class="button" onclick="refreshPage()"><i class="fa-solid fa-house"></i></button>
-            <button class="button" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
-            <button class="button" onclick="toggleSettings()"><i class="fas fa-cog"></i></button>
-            <button class="button" onclick="toggleGames()"><i class="fas fa-gamepad"></i></button>
-        </div>
-        <div class="content">
-            <iframe id="iframe" src="/static/index.html"></iframe>
-        </div>
-        <div class="settings-box" id="settings-box">
-            <h4>Settings</h4>
+        <div class="new-tab" onclick="addTab()">+ New Tab</div>
+    </div>
+
+    <div class="controls">
+        <button class="button" onclick="window.location.href='https://dsc.gg/bruny'"><i class="fa-brands fa-discord"></i></button>
+        <button onclick="refreshPage()"><i class="fas fa-sync"></i></button>
+        <button onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
+        <button onclick="toggleSettings()"><i class="fas fa-cog"></i></button>
+        <button onclick="toggleGames()"><i class="fas fa-gamepad"></i></button>
+    </div>
+
+    <div class="iframe-container">
+        <iframe class="iframe active" id="iframe-1" src="/static/index.html" sandbox="allow-same-origin allow-scripts"></iframe>
+    </div>
+
+    <div id="settings-box">
+    
+    <h4>Settings</h4>
 
             <h2 style="margin: 0;">tab cloaking</h2>
             <br>
@@ -64,26 +67,32 @@
             <button class="main-button" id="addMapping">Set Panic Key</button>
         </div>
     </div>
-            <p>Here you can configure various options.</p>
-            <button class="main-button" onclick="closeSettings()">Close</button>
-        </div>
-        <div class="games-box" id="games-box">
-            <h4>Games</h4>
-            <div>
+    
+    </div>
+    
+    <div id="games-box">
+        <h3>Choose a game:</h3>
+        <div>
                 <img src="/storage/games/polytrack/polytrack.jpeg" alt="poly track" onclick="loadGame('/storage/games/polytrack/index.html')">
                 <img src="/storage/games/redball4/splash.webp" alt="red ball 4" onclick="loadGame('/storage/games/redball4/index.html')">
                 <img src="/storage/backup-images/omeganuggetclicker.png" alt="slope" onclick="loadGame('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')">
                 <img src="/storage/games/slope/splash.png" alt="slope" onclick="loadGame('/storage/games/slope/index.html')">
                 <img src="/storage/games/1v1lol/splash.png" alt="1v1.lol" onclick="loadGame('/storage/games/1v1lol/index.html')">
                 <img src="/storage/games/soccerskills/splash.png" alt="soccer skills" onclick="loadGame('/storage/games/soccerskills/index.html')">
-                <img src="/storage/backup-images/roblox.webp" alt="roblox" onclick="loadGame('/static/embed.html#https://websitesball.com')">
+                <img src="/storage/backup-images/roblox.webp" alt="roblox" onclick="loadGame('/static/embed.html#https://mathstutor.life/')">
                 <img src="/storage/backup-images/run3.webp" alt="roblox" onclick="loadGame('https://run-three.global.ssl.fastly.net/tn6pS9dCf37xAhkJv/')">
                 <img src="/storage/games/basketball-stars/assets/images/basketball-stars.png" alt="slope" onclick="loadGame('/storage/games/basketball-stars/index.html')">
                 <img src="/storage/backup-images/rl.webp" alt="slope" onclick="loadGame('https://brunysixlgameassets.onrender.com/games/rocketsoccer/index.html')">
+                <img src="/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/512x340.jpg" alt="slope" onclick="loadGame('/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/index.html')">
+                <img src="/storage/games/eaglercraft/buddyholly.jpg" alt="slope" onclick="loadGame('/storage/games/eaglercraft/index.html')">
+                <img src="/storage/games/ducklife/ducklife.webp" alt="ducklife" onclick="loadGame('/storage/games/ducklife/index.html')">
+                <img src="/storage/games/gunmayhem2/gh2.webp" alt="ducklife" onclick="loadGame('/storage/games/gunmayhem2/index.html')">
+                <img src="/storage/games/bloxorz/bloxorz.webp" alt="ducklife" onclick="loadGame('/storage/games/bloxorz/index.html')">
+                <img src="/storage/games/papaspizzeria/papaspizzaria.jpg" alt="ducklife" onclick="loadGame('/storage/games/papaspizzeria/index.html')">
             </div>
-            <button class="main-button" onclick="closeGames()">Close</button>
-        </div>
+            
     </div>
+
     <script src="/script.js"></script>
     <script src="/storage/morejs/cloak.js"></script>
     <script src="/storage/morejs/cloak.js"></script>
@@ -92,9 +101,12 @@
 </body>
 </html>
 
+
     <meta property="og:title" content="BrunysIXL :)">
     <meta property="og:description" content="A proxy service for you to use anywhere.">
     <meta property="og:image" content="/static/ico.png">
     <meta property="og:image:width" content="100">
     <meta property="og:image:height" content="100">
     <meta property="og:url" content="https://brunysixl.xyz">
+    <meta name="theme-color" content="#141414">
+    <meta name="msapplication-TileColor" content="#141414">
