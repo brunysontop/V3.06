@@ -40,35 +40,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const presets = {
         google: {
-            favicon: "/ico/icons/google.ico",
+            favicon: "/images/icons/google.ico",
             title: "Google"
         },
         bing: {
-            favicon: "/ico/icons/bing.ico",
+            favicon: "/images/icons/bing.ico",
             title: "Bing"
         },
         gmail: {
-            favicon: "/ico/icons/gmail.ico",
+            favicon: "/images/icons/gmail.ico",
             title: "Gmail"
         },
         desmos: {
-            favicon: "/ico/icons/desmos.ico",
+            favicon: "/images/icons/desmos.ico",
             title: "Desmos | Graphing Calculator"
         },
         googleclassroom: {
-            favicon: "/ico/icons/googleclassroom.ico",
+            favicon: "/images/icons/googleclassroom.ico",
             title: "Home"
         },
         wikipedia: {
-            favicon: "/ico/icons/wikipedia.ico",
+            favicon: "/images/icons/wikipedia.ico",
             title: "Wikipedia"
         },
         chrometab: {
-            favicon: "/ico/icons/chromenewtab.ico",
+            favicon: "/images/icons/chromenewtab.ico",
             title: "New Tab"
         },
         googledrive: {
-            favicon: "/ico/icons/googledrive.ico",
+            favicon: "/images/icons/googledrive.ico",
             title: "My Drive"
         }
     };
@@ -121,3 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener('keydown', keyHandler);
     document.addEventListener('keyup', keyUpHandler);
 })();
+
+
+
