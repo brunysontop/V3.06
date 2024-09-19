@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+ 
 body {
     margin: 0;
     font-family: 'Roboto Mono', monospace;
+    color: #fff;
 }
 
 .browser {
@@ -20,12 +23,12 @@ body {
     padding: 10px;
     margin-right: 5px;
     cursor: pointer;
-    background-color: #141414;
-    color: #fff;
     border-radius: 5px;
     display: flex;
     align-items: center;
+    background-color: #141414;
     transition: background 0.3s ease;
+    color: #fff;
 }
 
 .tab.active {
@@ -37,19 +40,19 @@ body {
     margin-left: 5px;
     cursor: pointer;
     font-size: 16px;
-    color: #fff;
     background: none;
     border: none;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .new-tab {
     margin-left: auto;
     padding: 10px;
     background-color: #141414;
+    border-radius: 5px;
     border: none;
     color: #fff;
-    border-radius: 5px;
-    font-family: 'Roboto Mono', monospace;
 }
 
 .controls-bar {
@@ -61,12 +64,13 @@ body {
 
 .controls-bar button {
     margin-right: 5px;
-    color: #fff;
     padding: 5px;
     cursor: pointer;
     background: none;
     border: none;
     font-size: 16px;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .controls-bar i {
@@ -82,4 +86,41 @@ iframe {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+.settings-box, .games-box {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+    border-radius: 5px;
+    background-color: #141414;
+    color: #fff;
+    z-index: 1000;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.settings-box.active, .games-box.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.games-box img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 5px;
+}
+
+.games-box img:hover {
+    transform: scale(1.1);
 }
