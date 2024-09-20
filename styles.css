@@ -126,3 +126,12 @@ body {
 #games-box img:hover {
     transform: scale(1.1);
 }
+
+.bar-button {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.bar-button:hover {
+    color: #ccc;
+}
