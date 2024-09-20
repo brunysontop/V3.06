@@ -1,10 +1,10 @@
-<html">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrunysIXL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link id="favicon" rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/storage/morecss/key.css">
 </head>
@@ -29,28 +29,27 @@
     </div>
 
     <div id="settings-box">
-    
-    <h4>Settings</h4>
+        <h4>Settings</h4>
+        <h2>Tab Cloak</h2>
 
-    <h2 style="margin: 0;">tab cloaking</h2>
-    <br>
-    <select id="presetSelect">
-        <option value="google">google</option>
-        <option value="googleclassroom">google classroom</option>
-        <option value="googledrive">google drive</option>
-        <option value="chrometab">chrome new tab</option>
-        <option value="gmail">gmail</option>
-        <option value="bing">bing</option>
-        <option value="desmos">desmos calculator</option>
-        <option value="wikipedia">wikipedia</option>
-    </select>
+        <div>
+            <div class="form-group">
+                <label for="customTitle">Custom Title:</label>
+                <input type="text" id="customTitle" placeholder="Enter new title">
+            </div>
 
-    <button class="main-button" id="saveButton">select cloak</button>
-    <button class="main-button" id="resetButton">reset cloak</button>
-    <p id="success" style="display: none;">success message here</p>
-    
+            <div class="form-group">
+                <label for="customFavicon">Custom Favicon URL:</label>
+                <input type="text" id="customFavicon" placeholder="Enter favicon URL">
+            </div>
 
-            <h2>Panic Key</h2>
+            <div class="form-group">
+                <button class="main-button" onclick="changeFaviconAndTitle()">Change Favicon and Title</button>
+                <button class="main-button" onclick="resetFaviconAndTitle()">Reset Favicon and Title</button>
+            </div>
+        </div>
+
+        <h2>Panic Key</h2>
 
             <div class="container">
 
@@ -68,40 +67,86 @@
             <button class="main-button" id="addMapping">Set Panic Key</button>
         </div>
     </div>
-    
-    </div>
-    
-    <div id="games-box">
-        <h3>Choose a game:</h3>
-        <div>
-                <img src="/storage/games/polytrack/polytrack.jpeg" alt="poly track" onclick="loadGame('/storage/games/polytrack/index.html')">
-                <img src="/storage/games/redball4/splash.webp" alt="red ball 4" onclick="loadGame('/storage/games/redball4/index.html')">
-                <img src="/storage/backup-images/omeganuggetclicker.png" alt="slope" onclick="loadGame('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')">
-                <img src="/storage/games/slope/splash.png" alt="slope" onclick="loadGame('/storage/games/slope/index.html')">
-                <img src="/storage/games/1v1lol/splash.png" alt="1v1.lol" onclick="loadGame('/storage/games/1v1lol/index.html')">
-                <img src="/storage/games/soccerskills/splash.png" alt="soccer skills" onclick="loadGame('/storage/games/soccerskills/index.html')">
-                <img src="/storage/backup-images/roblox.webp" alt="roblox" onclick="loadGame('/static/embed.html#https://mathstutor.life/')">
-                <img src="/storage/backup-images/run3.webp" alt="roblox" onclick="loadGame('https://run-three.global.ssl.fastly.net/tn6pS9dCf37xAhkJv/')">
-                <img src="/storage/games/basketball-stars/assets/images/basketball-stars.png" alt="slope" onclick="loadGame('/storage/games/basketball-stars/index.html')">
-                <img src="/storage/backup-images/rl.webp" alt="slope" onclick="loadGame('https://brunysixlgameassets.onrender.com/games/rocketsoccer/index.html')">
-                <img src="/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/512x340.jpg" alt="slope" onclick="loadGame('/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/index.html')">
-                <img src="/storage/games/eaglercraft/buddyholly.jpg" alt="slope" onclick="loadGame('/storage/games/eaglercraft/index.html')">
-                <img src="/storage/games/ducklife/ducklife.webp" alt="ducklife" onclick="loadGame('/storage/games/ducklife/index.html')">
-                <img src="/storage/games/gunmayhem2/gh2.webp" alt="ducklife" onclick="loadGame('/storage/games/gunmayhem2/index.html')">
-                <img src="/storage/games/bloxorz/bloxorz.webp" alt="ducklife" onclick="loadGame('/storage/games/bloxorz/index.html')">
-                <img src="/storage/games/papaspizzeria/papaspizzaria.jpg" alt="ducklife" onclick="loadGame('/storage/games/papaspizzeria/index.html')">
-            </div>
-            
+
     </div>
 
+    <script>
+        function loadSavedSettings() {
+            const savedTitle = localStorage.getItem('customTitle');
+            const savedFavicon = localStorage.getItem('customFavicon');
+
+            if (savedTitle) {
+                document.title = savedTitle;
+                document.getElementById('customTitle').value = savedTitle; 
+            }
+
+            if (savedFavicon) {
+                document.getElementById('favicon').href = savedFavicon;
+                document.getElementById('customFavicon').value = savedFavicon; 
+            }
+        }
+
+        
+        function changeFaviconAndTitle() {
+            const newTitle = document.getElementById('customTitle').value;
+            const newFavicon = document.getElementById('customFavicon').value;
+
+            if (newTitle) {
+                document.title = newTitle;
+                localStorage.setItem('customTitle', newTitle); 
+            }
+
+            if (newFavicon) {
+                const favicon = document.getElementById('favicon');
+                favicon.href = newFavicon;
+                localStorage.setItem('customFavicon', newFavicon); 
+            }
+        }
+
+     
+        function resetFaviconAndTitle() {
+            
+            document.title = 'BrunysIXL';
+            document.getElementById('favicon').href = '/favicon.ico';
+            
+            localStorage.removeItem('customTitle');
+            localStorage.removeItem('customFavicon');
+           
+            document.getElementById('customTitle').value = '';
+            document.getElementById('customFavicon').value = '';
+        }
+
+       
+        window.onload = loadSavedSettings;
+    </script>
+
+<div id="games-box">
+    <h3>Choose a game:</h3>
+    <div>
+            <img src="/storage/games/polytrack/polytrack.jpeg" alt="poly track" onclick="loadGame('/storage/games/polytrack/index.html')">
+            <img src="/storage/games/redball4/splash.webp" alt="red ball 4" onclick="loadGame('/storage/games/redball4/index.html')">
+            <img src="/storage/backup-images/omeganuggetclicker.png" alt="slope" onclick="loadGame('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')">
+            <img src="/storage/games/slope/splash.png" alt="slope" onclick="loadGame('/storage/games/slope/index.html')">
+            <img src="/storage/games/1v1lol/splash.png" alt="1v1.lol" onclick="loadGame('/storage/games/1v1lol/index.html')">
+            <img src="/storage/games/soccerskills/splash.png" alt="soccer skills" onclick="loadGame('/storage/games/soccerskills/index.html')">
+            <img src="/storage/backup-images/roblox.webp" alt="roblox" onclick="loadGame('/static/embed.html#https://mathstutor.life/')">
+            <img src="/storage/backup-images/run3.webp" alt="roblox" onclick="loadGame('https://run-three.global.ssl.fastly.net/tn6pS9dCf37xAhkJv/')">
+            <img src="/storage/games/basketball-stars/assets/images/basketball-stars.png" alt="slope" onclick="loadGame('/storage/games/basketball-stars/index.html')">
+            <img src="/storage/backup-images/rl.webp" alt="slope" onclick="loadGame('https://brunysixlgameassets.onrender.com/games/rocketsoccer/index.html')">
+            <img src="/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/512x340.jpg" alt="slope" onclick="loadGame('/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/index.html')">
+            <img src="/storage/games/eaglercraft/buddyholly.jpg" alt="slope" onclick="loadGame('/storage/games/eaglercraft/index.html')">
+            <img src="/storage/games/ducklife/ducklife.webp" alt="ducklife" onclick="loadGame('/storage/games/ducklife/index.html')">
+            <img src="/storage/games/gunmayhem2/gh2.webp" alt="ducklife" onclick="loadGame('/storage/games/gunmayhem2/index.html')">
+            <img src="/storage/games/bloxorz/bloxorz.webp" alt="ducklife" onclick="loadGame('/storage/games/bloxorz/index.html')">
+            <img src="/storage/games/papaspizzeria/papaspizzaria.jpg" alt="ducklife" onclick="loadGame('/storage/games/papaspizzeria/index.html')">
+        </div>
+        
+</div>
+
     <script src="/script.js"></script>
-    <script src="/storage/morejs/cloak.js"></script>
-    <script src="/storage/morejs/data.js"></script>
-    <script src="/storage/morejs/settings.js"></script>
     <script src="/storage/morejs/key.js"></script>
 </body>
 </html>
-
 
     <meta property="og:title" content="BrunysIXL :)">
     <meta property="og:description" content="A proxy service for you to use anywhere.">
@@ -111,3 +156,4 @@
     <meta property="og:url" content="https://brunysixl.xyz">
     <meta name="theme-color" content="#141414">
     <meta name="msapplication-TileColor" content="#141414">
+
