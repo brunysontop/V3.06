@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-
+ 
 body {
     font-family: 'Roboto Mono', monospace;
     color: #fff;
@@ -82,38 +82,7 @@ body {
     display: block;
 }
 
-#settings-box {
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    background-color: #141414;
-    color: #fff;
-    border: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: none;
-    border-radius: 5px;
-}
-
-#games-box {
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    width: 300px;
-    background-color: #141414;
-    color: #fff;
-    border: none;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    display: none;
-    border-radius: 5px;
-}
-
-#settings-box.active, #games-box.active {
-    display: block;
-}
-
-#games-box img {
+#games-box-img {
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -123,7 +92,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-#games-box img:hover {
+#games-box-img:hover {
     transform: scale(1.1);
 }
 
@@ -134,4 +103,45 @@ body {
 
 .bar-button:hover {
     color: #ccc;
+}
+
+#open-btn-1 {
+    left: 10px;
+}
+
+#open-btn-2 {
+    left: 70px;
+}
+
+
+.box {
+    position: fixed;
+    top: 10px;
+    width: 300px;
+    padding: 20px;
+    background-color: #141414;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 999;
+}
+
+
+#box-1 {
+    right: 10px;
+}
+
+
+#box-2 {
+    right: 10px;
+}
+
+
+.box.visible {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
 }

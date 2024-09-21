@@ -20,15 +20,22 @@
         <button class="bar-button" onclick="window.location.href='https://dsc.gg/bruny'"><i class="fa-brands fa-discord"></i></button>
         <button class="bar-button" onclick="refreshPage()"><i class="fas fa-sync"></i></button>
         <button class="bar-button" onclick="toggleFullscreen()"><i class="fas fa-expand"></i></button>
-        <button class="bar-button" onclick="toggleSettings()"><i class="fas fa-cog"></i></button>
-        <button class="bar-button" onclick="toggleGames()"><i class="fas fa-gamepad"></i></button>
+
+        <button class="bar-button" id="open-btn-1">
+            <i class="fas fa-cog"></i>
+        </button>
+        
+        <button class="bar-button" id="open-btn-2">
+            <i class="fas fa-gamepad"></i>
+        </button>
+
     </div>
 
     <div class="iframe-container">
         <iframe class="iframe active" id="iframe-1" src="/static/index.html" sandbox="allow-forms allow-same-origin allow-scripts"></iframe>
     </div>
 
-    <div id="settings-box">
+    <div id="box-1" class="box">
         <h4>Tab Cloak</h4>
 
         <div>
@@ -42,7 +49,7 @@
 
             <div class="form-group">
                 <button class="main-button" onclick="changeFaviconAndTitle()">Change Favicon and Title</button>
-                <button class="main-button" onclick="resetFaviconAndTitle()">Reset Favicon and Title</button>
+                <button style="margin-top: 10px;" class="main-button" onclick="resetFaviconAndTitle()">Reset Favicon and Title</button>
             </div>
         </div>
 
@@ -115,31 +122,31 @@
         window.onload = loadSavedSettings;
     </script>
 
-<div id="games-box">
+<div id="box-2" class="box">
     <h3>Choose a game:</h3>
     <div>
-            <img src="/storage/games/polytrack/polytrack.jpeg" alt="poly track" onclick="loadGame('/storage/games/polytrack/index.html')">
-            <img src="/storage/games/redball4/splash.webp" alt="red ball 4" onclick="loadGame('/storage/games/redball4/index.html')">
-            <img src="/storage/backup-images/omeganuggetclicker.png" alt="slope" onclick="loadGame('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')">
-            <img src="/storage/games/slope/splash.png" alt="slope" onclick="loadGame('/storage/games/slope/index.html')">
-            <img src="/storage/games/1v1lol/splash.png" alt="1v1.lol" onclick="loadGame('/storage/games/1v1lol/index.html')">
-            <img src="/storage/games/soccerskills/splash.png" alt="soccer skills" onclick="loadGame('/storage/games/soccerskills/index.html')">
-            <img src="/storage/backup-images/roblox.webp" alt="roblox" onclick="loadGame('/static/embed.html#https://mathstutor.life/')">
-            <img src="/storage/backup-images/run3.webp" alt="roblox" onclick="loadGame('https://run-three.global.ssl.fastly.net/tn6pS9dCf37xAhkJv/')">
-            <img src="/storage/games/basketball-stars/assets/images/basketball-stars.png" alt="slope" onclick="loadGame('/storage/games/basketball-stars/index.html')">
-            <img src="/storage/backup-images/rl.webp" alt="slope" onclick="loadGame('https://brunysixlgameassets.onrender.com/games/rocketsoccer/index.html')">
-            <img src="/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/512x340.jpg" alt="slope" onclick="loadGame('/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/index.html')">
-            <img src="/storage/games/eaglercraft/buddyholly.jpg" alt="slope" onclick="loadGame('/storage/games/eaglercraft/index.html')">
-            <img src="/storage/games/ducklife/ducklife.webp" alt="ducklife" onclick="loadGame('/storage/games/ducklife/index.html')">
-            <img src="/storage/games/gunmayhem2/gh2.webp" alt="ducklife" onclick="loadGame('/storage/games/gunmayhem2/index.html')">
-            <img src="/storage/games/bloxorz/bloxorz.webp" alt="ducklife" onclick="loadGame('/storage/games/bloxorz/index.html')">
-            <img src="/storage/games/papaspizzeria/papaspizzaria.jpg" alt="ducklife" onclick="loadGame('/storage/games/papaspizzeria/index.html')">
+            <img id="games-box-img" src="/storage/games/polytrack/polytrack.jpeg" alt="poly track" onclick="loadGame('/storage/games/polytrack/index.html')">
+            <img id="games-box-img" src="/storage/games/redball4/splash.webp" alt="red ball 4" onclick="loadGame('/storage/games/redball4/index.html')">
+            <img id="games-box-img" src="/storage/backup-images/omeganuggetclicker.png" alt="slope" onclick="loadGame('https://script.google.com/macros/s/AKfycbzjgnGGeTNL2DTjJzVx3WGvsLjEyA47O6xYss-ijTLWWwrQv9siK9Gn_QqNDlDkrc27/exec')">
+            <img id="games-box-img" src="/storage/games/slope/splash.png" alt="slope" onclick="loadGame('/storage/games/slope/index.html')">
+            <img id="games-box-img" src="/storage/games/1v1lol/splash.png" alt="1v1.lol" onclick="loadGame('/storage/games/1v1lol/index.html')">
+            <img id="games-box-img" src="/storage/games/soccerskills/splash.png" alt="soccer skills" onclick="loadGame('/storage/games/soccerskills/index.html')">
+            <img id="games-box-img" src="/storage/backup-images/roblox.webp" alt="roblox" onclick="loadGame('/static/embed.html#https://mathstutor.life/')">
+            <img id="games-box-img" src="/storage/backup-images/run3.webp" alt="roblox" onclick="loadGame('https://run-three.global.ssl.fastly.net/tn6pS9dCf37xAhkJv/')">
+            <img id="games-box-img" src="/storage/games/basketball-stars/assets/images/basketball-stars.png" alt="slope" onclick="loadGame('/storage/games/basketball-stars/index.html')">
+            <img id="games-box-img" src="/storage/backup-images/rl.webp" alt="slope" onclick="loadGame('https://brunysixlgameassets.onrender.com/games/rocketsoccer/index.html')">
+            <img id="games-box-img" src="/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/512x340.jpg" alt="slope" onclick="loadGame('/storage/games/noobsteveparkour/games-cdn-main-projects-noob-steve-parkour/projects/noobsteveparkour/index.html')">
+            <img id="games-box-img" src="/storage/games/eaglercraft/buddyholly.jpg" alt="slope" onclick="loadGame('/storage/games/eaglercraft/index.html')">
+            <img id="games-box-img" src="/storage/games/ducklife/ducklife.webp" alt="ducklife" onclick="loadGame('/storage/games/ducklife/index.html')">
+            <img id="games-box-img" src="/storage/games/gunmayhem2/gh2.webp" alt="ducklife" onclick="loadGame('/storage/games/gunmayhem2/index.html')">
+            <img id="games-box-img" src="/storage/games/bloxorz/bloxorz.webp" alt="ducklife" onclick="loadGame('/storage/games/bloxorz/index.html')">
+            <img id="games-box-img" src="/storage/games/papaspizzeria/papaspizzaria.jpg" alt="ducklife" onclick="loadGame('/storage/games/papaspizzeria/index.html')">
         </div>
-        
 </div>
 
     <script src="/script.js"></script>
     <script src="/storage/morejs/key.js"></script>
+    <script src="/storage/morejs/box.js"></script>
 </body>
 </html>
 
