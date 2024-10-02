@@ -1,6 +1,6 @@
 self.__uv$config = {
     prefix: '/static/ixl/',
-    bare:'https://bare.frogiee.one',
+    bare:'https://skibzy.global.ssl.fastly.net/bear/',
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/static/uv/uv.handler.js',
